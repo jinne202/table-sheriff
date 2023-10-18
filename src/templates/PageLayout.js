@@ -17,7 +17,6 @@ const MobileWrap = styled.div`
   overflow-y: auto;
   background-color: white;
   position: relative;
-  border: 1px solid blue;
   padding: 0 8px;
 `;
 

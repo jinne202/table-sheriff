@@ -4,6 +4,8 @@ export const dummy = {
   entireProduct: '5',
   safetyProduct: '5',
   companyContact: '050-71392-6912',
+  latitude: 37.3800066,
+  longitude: 127.1170061,
   product: [
     {
       productName: '낙지',

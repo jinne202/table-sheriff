@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PageLayout from 'templates/PageLayout';
-import Map from 'resources/Map.png';
+import KakaoMap from 'components/modules/KakaoMap';
 import ArrowRigth from 'resources/ArrowRigth.png';
 import ArrowRightWhite from 'resources/ArrowRightWhite.png';
 import { dummy } from 'resources/dummyData';
@@ -15,9 +15,9 @@ const Main = () => {
         우리나라 수산물의 안전한 소비와
         <br /> 공급을 위한 프로덕트입니다.
       </SubText>
-      <ImgWrap>
-        <Img src={Map} alt="지도" />
-      </ImgWrap>
+      <MapWrap>
+        <KakaoMap latitude={dummy.latitude} longitude={dummy.longitude} />
+      </MapWrap>
       <Card>
         <CompanyTitleWrap>
           <CompanyTitle>{dummy.companyName}</CompanyTitle>
@@ -63,9 +63,11 @@ const SubText = styled.p`
   line-height: 24px;
 `;
 
-const ImgWrap = styled.div`
+const MapWrap = styled.div`
   margin: 32px auto 0;
   width: 326px;
+  border-radius: 10px;
+  overflow: hidden;
 `;
 
 const Img = styled.img``;
