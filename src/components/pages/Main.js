@@ -24,7 +24,7 @@ const Main = () => {
         <br />
         안전 정보 데이터를 활용하여 서비스를 제공하고 있습니다.
       </SmallText>
-      <Link to="/detail">
+      <Link to="/detail" id="main-button">
         <Card>
           <CompanyTitleWrap>
             <CompanyTitle>{dummy.companyName}</CompanyTitle>
