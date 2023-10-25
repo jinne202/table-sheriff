@@ -34,6 +34,11 @@ const Detail = () => {
       <MapWrap>
         <Img src={SeaMap} alt="지도" />
       </MapWrap>
+      <SmallText>
+        밥상보안관은 행정안전부의 공공데이터포털 해양방사능
+        <br />
+        안전 정보 데이터를 활용하여 서비스를 제공하고 있습니다.
+      </SmallText>
       <ProductDetailInfo>
         <ProductDetailInfoTitle>우리 업체의 대표 수산물 원산지 한눈에</ProductDetailInfoTitle>
         {dummy.product.map((item) => (
@@ -125,7 +130,7 @@ const ContactInfoText = styled(InfoText)`
 `;
 
 const MapWrap = styled.div`
-  margin: 32px auto 48px;
+  margin: 32px auto 0;
   width: 326px;
 `;
 
@@ -182,4 +187,14 @@ const Origin = styled.p`
 const Status = styled(Origin)`
   color: #20bbff;
   width: 40px;
+`;
+
+const SmallText = styled.p`
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #6d758f;
+  margin: 10px 0 48px 0;
 `;

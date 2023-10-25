@@ -5,6 +5,7 @@ import KakaoMap from 'components/modules/KakaoMap';
 import ArrowRigth from 'resources/ArrowRigth.png';
 import ArrowRightWhite from 'resources/ArrowRightWhite.png';
 import { dummy } from 'resources/dummyData';
+import { Link } from 'react-router-dom';
 
 const Main = () => {
   return (
@@ -18,21 +19,28 @@ const Main = () => {
       <MapWrap>
         <KakaoMap latitude={dummy.latitude} longitude={dummy.longitude} />
       </MapWrap>
-      <Card>
-        <CompanyTitleWrap>
-          <CompanyTitle>{dummy.companyName}</CompanyTitle>
-          <ProductInfo>
-            수산물 {dummy.entireProduct}개중 {dummy.safetyProduct}개 안전
-          </ProductInfo>
-        </CompanyTitleWrap>
-        <CompanyAddress>{dummy.companyAddress}</CompanyAddress>
-        <ShowMoreButton>
-          상세보기
-          <ButtonImg>
-            <Img src={ArrowRigth} alt="화살표" />
-          </ButtonImg>
-        </ShowMoreButton>
-      </Card>
+      <SmallText>
+        밥상보안관은 행정안전부의 공공데이터포털 해양방사능
+        <br />
+        안전 정보 데이터를 활용하여 서비스를 제공하고 있습니다.
+      </SmallText>
+      <Link to="/detail">
+        <Card>
+          <CompanyTitleWrap>
+            <CompanyTitle>{dummy.companyName}</CompanyTitle>
+            <ProductInfo>
+              수산물 {dummy.entireProduct}개중 {dummy.safetyProduct}개 안전
+            </ProductInfo>
+          </CompanyTitleWrap>
+          <CompanyAddress>{dummy.companyAddress}</CompanyAddress>
+          <ShowMoreButton>
+            상세보기
+            <ButtonImg>
+              <Img src={ArrowRigth} alt="화살표" />
+            </ButtonImg>
+          </ShowMoreButton>
+        </Card>
+      </Link>
       <ApplyButton>
         <ApplyButtonWrap>
           밥상보안관 업체 신청하기
@@ -71,6 +79,16 @@ const MapWrap = styled.div`
 `;
 
 const Img = styled.img``;
+
+const SmallText = styled.p`
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: #6d758f;
+  margin: 10px 0 0 0;
+`;
 
 const Card = styled.div`
   width: 326px;
