@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PageLayout from 'templates/PageLayout';
-import KakaoMap from 'components/modules/KakaoMap';
+// import KakaoMap from 'components/modules/KakaoMap';
 import ArrowRigth from 'resources/ArrowRigth.png';
 import ArrowRightWhite from 'resources/ArrowRightWhite.png';
 import { dummy } from 'resources/dummyData';
@@ -16,9 +16,7 @@ const Main = () => {
         우리나라 수산물의 안전한 소비와
         <br /> 공급을 위한 프로덕트입니다.
       </SubText>
-      <MapWrap>
-        <KakaoMap latitude={dummy.latitude} longitude={dummy.longitude} />
-      </MapWrap>
+      <MapWrap>{/* <KakaoMap latitude={dummy.latitude} longitude={dummy.longitude} /> */}</MapWrap>
       <SmallText>
         밥상보안관은 행정안전부의 공공데이터포털 해양방사능
         <br />
