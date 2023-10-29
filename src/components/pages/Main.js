@@ -41,14 +41,16 @@ const Main = () => {
           </ShowMoreButton>
         </Card>
       </Link>
-      <ApplyButton>
-        <ApplyButtonWrap>
-          밥상보안관 업체 신청하기
-          <ButtonImg>
-            <Img src={ArrowRightWhite} alt="화살표" />
-          </ButtonImg>
-        </ApplyButtonWrap>
-      </ApplyButton>
+      <Link to="https://forms.gle/Y3VHvMC2G8w9wCpn7" id="apply-btn">
+        <ApplyButton>
+          <ApplyButtonWrap>
+            밥상보안관 업체 신청하기
+            <ButtonImg>
+              <Img src={ArrowRightWhite} alt="화살표" />
+            </ButtonImg>
+          </ApplyButtonWrap>
+        </ApplyButton>
+      </Link>
     </PageLayout>
   );
 };

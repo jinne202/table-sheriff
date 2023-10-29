@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PageLayout from 'templates/PageLayout';
 import { dummy } from 'resources/dummyData';
+import { Link } from 'react-router-dom';
 import MapIcon from 'resources/MapIcon.png';
 import ContactIcon from 'resources/ContactIcon.png';
 import SeaMap from 'resources/SeaMap.png';
@@ -10,7 +11,9 @@ import CheckCircle from 'resources/CheckCircle.png';
 const Detail = () => {
   return (
     <PageLayout>
-      <Title>️👮👮‍♀️‍밥상보안관👮👮‍</Title>
+      <Link to="/" id="back-button">
+        <Title>️👮👮‍♀️‍밥상보안관👮👮‍</Title>
+      </Link>
       <Info>
         <CompanyTitleWrap>
           <CompanyTitle>{dummy.companyName}</CompanyTitle>
