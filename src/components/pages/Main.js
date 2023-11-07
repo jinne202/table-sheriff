@@ -20,25 +20,32 @@ const Main = () => {
         <KakaoMap latitude={dummy.latitude} longitude={dummy.longitude} />
       </MapWrap>
       <SmallText>
-        밥상보안관은 행정안전부의 공공데이터포털 해양방사능
+        행정안전부 해양방사능 안전 정보 데이터
         <br />
-        안전 정보 데이터를 활용하여 서비스를 제공하고 있습니다.
+        최종 업로드 날짜 : 10월 25일
       </SmallText>
       <Link to="/detail" id="main-button">
         <Card>
-          <CompanyTitleWrap>
-            <CompanyTitle>{dummy.companyName}</CompanyTitle>
-            <ProductInfo>
-              수산물 {dummy.entireProduct}개중 {dummy.safetyProduct}개 안전
-            </ProductInfo>
-          </CompanyTitleWrap>
-          <CompanyAddress>{dummy.companyAddress}</CompanyAddress>
-          <ShowMoreButton>
-            상세보기
-            <ButtonImg>
-              <Img src={ArrowRigth} alt="화살표" />
-            </ButtonImg>
-          </ShowMoreButton>
+          <CardImgWrap>
+            <CardImg src={dummy.thumbnail} alt="썸네일" />
+          </CardImgWrap>
+          <CardTextWrap>
+            <CompanyTitleWrap>
+              <CompanyTitle>{dummy.companyName}</CompanyTitle>
+              <ProductInfo>
+                수산물 {dummy.entireProduct}개중 {dummy.safetyProduct}개 안전
+              </ProductInfo>
+            </CompanyTitleWrap>
+            <CompanyAddress>{dummy.companyAddress}</CompanyAddress>
+            <ButtonWrap>
+              <ShowMoreButton>
+                상세보기
+                <ButtonImg>
+                  <Img src={ArrowRigth} alt="화살표" />
+                </ButtonImg>
+              </ShowMoreButton>
+            </ButtonWrap>
+          </CardTextWrap>
         </Card>
       </Link>
       <Link to="https://forms.gle/Y3VHvMC2G8w9wCpn7" id="apply-btn">
@@ -94,13 +101,24 @@ const SmallText = styled.p`
 
 const Card = styled.div`
   width: 326px;
-  height: 161px;
+  height: 109px;
   border: 1px solid #e1e4ed;
   margin: 32px auto 0;
   box-shadow: 0px 1px 4px 0px #19213d14;
   border-radius: 8px;
-  padding: 38px 24px;
+  padding: 22px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
+
+const CardImgWrap = styled.div``;
+const CardTextWrap = styled.div`
+  margin: 0 0 0 10px;
+  width: 210px;
+`;
+
+const CardImg = styled.img``;
 
 const CompanyTitleWrap = styled.div`
   display: flex;
@@ -118,7 +136,7 @@ const CompanyTitle = styled.p`
 
 const ProductInfo = styled.p`
   color: #20bbff;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 800;
   line-height: 28px;
   letter-spacing: 0em;
@@ -126,25 +144,30 @@ const ProductInfo = styled.p`
 `;
 
 const CompanyAddress = styled.p`
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 400;
-  line-height: 22px;
+  line-height: 12px;
   letter-spacing: 0em;
   text-align: left;
-  margin: 10px 0 14px;
+  margin: 5px 0 8px;
   color: #6d758f;
 `;
 
+const ButtonWrap = styled.div`
+  display: flex;
+  justify-content: end;
+`;
+
 const ShowMoreButton = styled.button`
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 800;
-  line-height: 22px;
+  line-height: 14px;
   letter-spacing: 0em;
-  text-align: center;
   color: #6d758f;
   border: 0;
   padding: 0;
   display: flex;
+  justify-content: end;
 `;
 
 const ButtonImg = styled.div`
