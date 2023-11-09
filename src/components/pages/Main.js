@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PageLayout from 'templates/PageLayout';
 import KakaoMap from 'components/modules/KakaoMap';
 import ArrowRigth from 'resources/ArrowRigth.png';
-import ArrowRightWhite from 'resources/ArrowRightWhite.png';
 import { dummy } from 'resources/dummyData';
 import { Link } from 'react-router-dom';
 
