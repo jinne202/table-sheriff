@@ -48,16 +48,14 @@ const Main = () => {
           </CardTextWrap>
         </Card>
       </Link>
-      <Link to="https://forms.gle/Y3VHvMC2G8w9wCpn7" id="apply-btn">
-        <ApplyButton>
-          <ApplyButtonWrap>
-            밥상보안관 업체 신청하기
-            <ButtonImg>
-              <Img src={ArrowRightWhite} alt="화살표" />
-            </ButtonImg>
-          </ApplyButtonWrap>
-        </ApplyButton>
-      </Link>
+      <ButtonFlexWrap>
+        <ButtonLink to="https://forms.gle/Y3VHvMC2G8w9wCpn7" id="apply-btn">
+          <ApplyButton>업체 신청하기</ApplyButton>
+        </ButtonLink>
+        <ButtonLink to="https://pf.kakao.com/_UhxgKG/chat?from=qr" id="kakao-btn">
+          <KaKaoButton>카톡 문의하기</KaKaoButton>
+        </ButtonLink>
+      </ButtonFlexWrap>
     </PageLayout>
   );
 };
@@ -180,13 +178,19 @@ const ButtonImg = styled.div`
   }
 `;
 
+const ButtonLink = styled(Link)`
+  & + & {
+    margin: 0 0 0 10px;
+  }
+`;
+
 const ApplyButton = styled.button`
-  width: 290px;
-  height: 48px;
+  width: 159px;
+  height: 46px;
   padding: 18 22px;
   border-radius: 8px;
   margin: 48px auto 100px;
-  background-color: #6d758f;
+  background-color: #20bbff;
   box-shadow: 0px 1px 4px 0px #19213d14;
   display: block;
   font-size: 16px;
@@ -197,7 +201,11 @@ const ApplyButton = styled.button`
   color: #ffffff;
 `;
 
-const ApplyButtonWrap = styled.div`
+const KaKaoButton = styled(ApplyButton)`
+  background-color: #f0d71b;
+`;
+
+const ButtonFlexWrap = styled.div`
   display: flex;
   justify-content: center;
 `;

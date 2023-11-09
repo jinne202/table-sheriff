@@ -34,14 +34,9 @@ const Detail = () => {
           <ContactInfoText>{dummy.companyContact}</ContactInfoText>
         </SubInfo>
       </Info>
-      <MapWrap>
-        <Img src={SeaMap} alt="지도" />
-      </MapWrap>
-      <SmallText>
-        밥상보안관은 행정안전부의 공공데이터포털 해양방사능
-        <br />
-        안전 정보 데이터를 활용하여 서비스를 제공하고 있습니다.
-      </SmallText>
+      <ImgWrap>
+        <Img src={dummy.companyImg} alt="company-img" />
+      </ImgWrap>
       <ProductDetailInfo>
         <ProductDetailInfoTitle>우리 업체의 대표 수산물 원산지 한눈에</ProductDetailInfoTitle>
         {dummy.product.map((item) => (
@@ -67,6 +62,15 @@ const Detail = () => {
           </ProductDetailBoxWrap>
         ))}
       </ProductDetailInfo>
+      <SmallText>원산지 정보 업데이트 날짜 : 2024년 10월 23일</SmallText>
+      <MapWrap>
+        <Img src={SeaMap} alt="지도" />
+      </MapWrap>
+      <SmallText>
+        밥상보안관은 행정안전부의 공공데이터포털 해양방사능
+        <br />
+        안전 정보 데이터를 활용하여 서비스를 제공하고 있습니다.
+      </SmallText>
     </PageLayout>
   );
 };
@@ -133,14 +137,14 @@ const ContactInfoText = styled(InfoText)`
 `;
 
 const MapWrap = styled.div`
-  margin: 32px auto 0;
+  margin: 15px auto 0;
   width: 326px;
 `;
 
 const ProductDetailInfo = styled.div`
   padding: 0 10px;
   width: 326px;
-  margin: 0 auto 40px;
+  margin: 30px auto 40px;
 `;
 
 const ProductDetailInfoTitle = styled.p`
@@ -199,5 +203,10 @@ const SmallText = styled.p`
   letter-spacing: 0em;
   text-align: center;
   color: #6d758f;
-  margin: 10px 0 48px 0;
+  margin: 10px 0 20px 0;
+`;
+
+const ImgWrap = styled.div`
+  margin: 20px auto 0;
+  width: 327px;
 `;
