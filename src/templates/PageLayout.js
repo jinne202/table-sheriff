@@ -18,7 +18,6 @@ const MobileWrap = styled.div`
   overflow-y: auto;
   background-color: white;
   position: relative;
-  padding: 0 8px;
 
   @media ${theme.mobile} {
     width: 360px;
