@@ -25,71 +25,114 @@ const FoodDetail = () => {
 
   return (
     <PageLayout>
-      <Wrap>
-        <Title>👮👮‍♀️‍밥상보안관👮👮‍</Title>
-        <Nav>
-          <Background onClick={handleClickBack}>
-            <MdChevronLeft />
-          </Background>
-          <NavText>식품</NavText>
-        </Nav>
-        <TitleWrap>
-          <Origin>{foodData[dataId - 1].origin}</Origin>
-          <Brand>{foodData[dataId - 1].brand}</Brand>
-          <Name>{foodData[dataId - 1].name}</Name>
-          <Price>{numberWidthComma(foodData[dataId - 1].price)}원</Price>
-          <SubText>
-            해당 금액은 정가이며 다양한 할인 및 혜택은
-            <br />
-            구매사이트에서 확인할 수 있습니다.
-          </SubText>
-        </TitleWrap>
-        <Link to={foodData[dataId - 1].storeUrl}>
-          <Button>구매사이트 바로가기</Button>
-        </Link>
-        <Photo></Photo>
-        <ProductDetail>
-          <ProductDetailTitle>대표 수산물 원산지 한눈에</ProductDetailTitle>
-          <ProductDetailBoxWrap>
-            <ProductName>
-              <ProductDetailIcon>
-                <FaCircleCheck />
-              </ProductDetailIcon>
-              새우
-            </ProductName>
-            <ProductStatus>
-              <ProductOrigin>{foodData[dataId - 1].origin}</ProductOrigin>
-              <Status>안전</Status>
-            </ProductStatus>
-          </ProductDetailBoxWrap>
-          <Date>
-            원산지 정보 업데이트 날짜 : 20{foodData[dataId - 1].date.slice(0, 2)}년{' '}
-            {foodData[dataId - 1].date.slice(3, 5)}월 {foodData[dataId - 1].date.slice(6, 8)}일
-          </Date>
-          <Notice>
-            원산지 정보는 업데이트 날짜에 따른
-            <br />
-            해당 업체 고객센터에 문의한 내역입니다.
-          </Notice>
-          <CompanyInfo>
-            <CompanyInfoBox>
-              <CompanyInfoLabel>고객센터</CompanyInfoLabel>
-              <CompanyInfoText>070-5555-5555</CompanyInfoText>
-            </CompanyInfoBox>
-            <CompanyInfoBox>
-              <CompanyInfoLabelBold>구매처</CompanyInfoLabelBold>
-              <Link to={foodData[dataId - 1].storeUrl}>
-                <SiteButton>
-                  <SiteButtonText>구매사이트 바로가기</SiteButtonText>
-                  <SiteButtonIcon>
-                    <FaArrowRight />
-                  </SiteButtonIcon>
-                </SiteButton>
-              </Link>
-            </CompanyInfoBox>
-          </CompanyInfo>
-        </ProductDetail>
-      </Wrap>
+      {foodData[dataId - 1].deleted === true ? (
+        <DeleteWrap>
+          <DeletePageText>페이지를 찾을 수 없습니다</DeletePageText>
+        </DeleteWrap>
+      ) : (
+        <Wrap>
+          <Title>👮👮‍♀️‍밥상보안관👮👮‍</Title>
+          <Nav>
+            <Background onClick={handleClickBack} id="back-food-detail-btn">
+              <MdChevronLeft />
+            </Background>
+            <NavText>식품</NavText>
+          </Nav>
+          <TitleWrap>
+            <Origin>
+              {Array.isArray(foodData[dataId - 1].origin)
+                ? foodData[dataId - 1].origin.map((item) => <OriginText>{item}</OriginText>)
+                : foodData[dataId - 1].origin + foodData[dataId - 1]?.region &&
+                  ` - ` + foodData[dataId - 1]?.region}
+            </Origin>
+            <Brand>{foodData[dataId - 1].brand}</Brand>
+            <Name>{foodData[dataId - 1].name}</Name>
+            <Price>{numberWidthComma(foodData[dataId - 1].price)}원</Price>
+            <SubText>
+              해당 금액은 정가이며 다양한 할인 및 혜택은
+              <br />
+              구매사이트에서 확인할 수 있습니다.
+            </SubText>
+          </TitleWrap>
+          <Link to={foodData[dataId - 1].storeUrl} id="food-site-btn">
+            <Button>구매사이트 바로가기</Button>
+          </Link>
+          <Photo>
+            <DetailImg src={foodData[dataId - 1].img} />
+          </Photo>
+          <ProductDetail>
+            <ProductDetailTitle>대표 수산물 원산지 한눈에</ProductDetailTitle>
+            {Array.isArray(foodData[dataId - 1].product) ? (
+              foodData[dataId - 1].product.map((item, idx) => (
+                <ProductDetailBoxWrap>
+                  <ProductName>
+                    <ProductDetailIcon>
+                      <FaCircleCheck />
+                    </ProductDetailIcon>
+                    {item}
+                  </ProductName>
+                  <ProductStatus>
+                    <ProductOrigin>
+                      {foodData[dataId - 1].origin[idx] === '국내산'
+                        ? foodData[dataId - 1].origin[idx] +
+                          ` (${foodData[dataId - 1].region[idx]})`
+                        : foodData[dataId - 1].origin[idx]}
+                    </ProductOrigin>
+                    <Status>안전</Status>
+                  </ProductStatus>
+                </ProductDetailBoxWrap>
+              ))
+            ) : (
+              <ProductDetailBoxWrap>
+                <ProductName>
+                  <ProductDetailIcon>
+                    <FaCircleCheck />
+                  </ProductDetailIcon>
+                  {foodData[dataId - 1].product}
+                </ProductName>
+                <ProductStatus>
+                  <ProductOrigin>
+                    {foodData[dataId - 1].origin === '국내산'
+                      ? foodData[dataId - 1].origin + ` (${foodData[dataId - 1].region})`
+                      : foodData[dataId - 1].origin}
+                  </ProductOrigin>
+                  <Status>안전</Status>
+                </ProductStatus>
+              </ProductDetailBoxWrap>
+            )}
+            <Date>
+              원산지 정보 업데이트 날짜 : 20{foodData[dataId - 1].date.slice(0, 2)}년{' '}
+              {foodData[dataId - 1].date.slice(3, 5)}월 {foodData[dataId - 1].date.slice(6, 8)}일
+            </Date>
+            <Notice>
+              원산지 정보는 업데이트 날짜에 따른
+              <br />
+              해당 업체 고객센터에 문의한 내역입니다.
+            </Notice>
+            <CompanyInfo>
+              <CompanyInfoBox>
+                <CompanyInfoLabel>고객센터</CompanyInfoLabel>
+                <CompanyInfoText>
+                  {foodData[dataId - 1].customerServieceCenter
+                    ? foodData[dataId - 1].customerServieceCenter
+                    : '정보 미제공'}
+                </CompanyInfoText>
+              </CompanyInfoBox>
+              <CompanyInfoBox>
+                <CompanyInfoLabelBold>구매처</CompanyInfoLabelBold>
+                <Link to={foodData[dataId - 1].storeUrl} id="food-site-shortcuts">
+                  <SiteButton>
+                    <SiteButtonText>구매사이트 바로가기</SiteButtonText>
+                    <SiteButtonIcon>
+                      <FaArrowRight />
+                    </SiteButtonIcon>
+                  </SiteButton>
+                </Link>
+              </CompanyInfoBox>
+            </CompanyInfo>
+          </ProductDetail>
+        </Wrap>
+      )}
     </PageLayout>
   );
 };
@@ -183,6 +226,7 @@ const Photo = styled.div`
   background-color: #e6e6e6;
   border-radius: 10px;
   margin: 0 auto;
+  overflow: hidden;
 `;
 
 const ProductDetail = styled.div`
@@ -297,5 +341,35 @@ const SiteButtonIcon = styled.p`
   line-height: 14px;
   margin: 3px 0 0 4px;
 `;
+
+const DetailImg = styled.img`
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+`;
+
+const OriginText = styled.span`
+  & + & {
+    margin: 0 0 0 5px;
+
+    &::before {
+      content: '/ ';
+    }
+  }
+`;
+
+const DeleteWrap = styled.div`
+  width: 360px;
+  margin: 0 auto;
+  padding: 20px 0;
+  height: 100vh;
+  background-color: #eee;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const DeletePageText = styled.p``;
 
 export default FoodDetail;

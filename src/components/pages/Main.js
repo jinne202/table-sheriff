@@ -14,10 +14,10 @@ const Main = () => {
             우리나라 수산물의 안전한 소비와
             <br /> 공급을 위한 프로덕트입니다.
           </SubText>
-          <Link to="/food">
+          <Link to="/food" id="main-food-btn">
             <ButtonBlue>식품 보기</ButtonBlue>
           </Link>
-          <Link to="/restaurant">
+          <Link to="/restaurant" id="main-restaurant-btn">
             <Button>식당 보기</Button>
           </Link>
         </Wrap>

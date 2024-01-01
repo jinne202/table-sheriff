@@ -17,7 +17,7 @@ const RestaurantMain = () => {
       <Wrap>
         <Title>👮👮‍♀️‍밥상보안관👮👮‍</Title>
         <Nav>
-          <Background onClick={handleClickBack}>
+          <Background onClick={handleClickBack} id="back-restaurant-btn">
             <MdChevronLeft />
           </Background>
           <NavText>식당</NavText>

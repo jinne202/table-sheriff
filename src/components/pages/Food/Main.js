@@ -18,7 +18,7 @@ const FoodMain = () => {
       <Wrap>
         <Title>👮👮‍♀️‍밥상보안관👮👮‍</Title>
         <Nav>
-          <Background onClick={handleClickBack}>
+          <Background onClick={handleClickBack} id="back-food-btn">
             <MdChevronLeft />
           </Background>
           <NavText>식품</NavText>
@@ -29,17 +29,20 @@ const FoodMain = () => {
         </SubText>
         <SecureText>*해외 수산물 정부데이터의 안전 여부는 업데이트 예정입니다.</SecureText>
         <CardWrap>
-          {foodData.map((item) => (
-            <CardMargin>
-              <Link to={{ pathname: `/food/detail/${item.idx}` }}>
-                <Card key={item.idx} data={item} />
-              </Link>
-            </CardMargin>
-          ))}
+          {foodData.map(
+            (item) =>
+              !item.deleted && (
+                <CardMargin>
+                  <Link to={{ pathname: `/food/detail/${item.idx}` }}>
+                    <Card key={item.idx} data={item} />
+                  </Link>
+                </CardMargin>
+              ),
+          )}
         </CardWrap>
 
         <ButtonFlexWrap>
-          <ButtonLink to="https://forms.gle/Y3VHvMC2G8w9wCpn7" id="food-apply-btn">
+          <ButtonLink to="https://forms.gle/PbGzqhU4JeEki2Ea8" id="food-apply-btn">
             <ApplyButton>식품 신청하기</ApplyButton>
           </ButtonLink>
           <ButtonLink to="https://pf.kakao.com/_UhxgKG/chat?from=qr" id="food-kakao-btn">

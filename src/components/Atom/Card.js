@@ -1,12 +1,20 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Card = ({ data }) => {
   return (
     <Wrap>
-      <Photo></Photo>
+      <Photo>
+        <CardImg src={data.img} />
+      </Photo>
       <TextWrap>
-        <Origin>{data.origin}</Origin>
+        {Array.isArray(data.origin) ? (
+          <Origin active={data.origin[0] === '국내산'}>{data.origin[0]}</Origin>
+        ) : (
+          <Origin active={data.origin === '국내산'}>
+            {data.origin === '국내산' ? data.origin + ` (${data.region})` : data.origin}
+          </Origin>
+        )}
         <Brand>{data.brand}</Brand>
         <Name>{data.name}</Name>
       </TextWrap>
@@ -46,6 +54,12 @@ const Origin = styled.p`
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+
+  ${(props) =>
+    props.active === false &&
+    css`
+      color: #d590ff;
+    `}
 `;
 
 const Brand = styled.p`
@@ -74,6 +88,12 @@ const Badge = styled.div`
   right: 15px;
   padding: 2px 10px 1px;
   border-radius: 6px;
+`;
+
+const CardImg = styled.img`
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 `;
 
 export default Card;
